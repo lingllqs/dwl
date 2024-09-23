@@ -94,12 +94,14 @@ enum
     CurMove,
     CurResize
 }; /* cursor */
+
 enum
 {
     XDGShell,
     LayerShell,
     X11
 }; /* client types */
+
 enum
 {
     LyrBg,
@@ -2636,8 +2638,8 @@ void spawn(const Arg *arg)
 {
     if (fork() == 0)
     {
-        dup2(STDERR_FILENO, STDOUT_FILENO);                  // 标准输出重定向到标准错误
-        setsid();                                            // 创建新会话，使当前进程成为新的会话领导进程
+        dup2(STDERR_FILENO, STDOUT_FILENO); // 标准输出重定向到标准错误
+        setsid();                           // 创建新会话，使当前进程成为新的会话领导进程
         execvp(((char **)arg->v)[0], (char **)arg->v);       // 执行的任务
         die("dwl: execvp %s failed:", ((char **)arg->v)[0]); // execvp 函数只有错误发生才返回
     }

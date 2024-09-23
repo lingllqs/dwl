@@ -5,4 +5,4 @@ rofi \
 	-drun-match-fields all \
 	-no-drun-show-actions \
 	-terminal alacritty \
-	-theme "$DWL_DIR"/scripts/rofi/launcher.sh
+	-theme $DWL/scripts/rofi/launcher_1.rasi

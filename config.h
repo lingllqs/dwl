@@ -24,6 +24,7 @@ static int log_level = WLR_ERROR;
 static const Rule rules[] = {
 	/* app_id               title       tags mask     isfloating   monitor */
 	{ "Gimp",               NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
+	{ "FLOAT",              NULL,       0,            1,           -1 }, //
 	{ "firefox-nightly",    NULL,       1 << 1,       0,           -1 }, /* Start on ONLY tag "2" */
 };
 
@@ -149,7 +150,8 @@ static const Key keys[] = {
 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
 	{ MODKEY,                    XKB_KEY_Delete,     quit,           {0} }, // 退出 dwl
-    { MODKEY,                    XKB_KEY_d,          spawn, SHCMD("pkill -x rofi || $DWL_DIR/scripts/rofi/launcher.sh") },
+    { MODKEY,                    XKB_KEY_d,          spawn, SHCMD("pkill -x rofi || $DWL/scripts/rofi/launcher.sh") },
+	{ MODKEY,                    XKB_KEY_space,      spawn,          SHCMD("alacritty --class FLOAT") },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
